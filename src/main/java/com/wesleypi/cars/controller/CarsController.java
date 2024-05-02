@@ -25,6 +25,8 @@ public class CarsController {
         return externalService.getCars();
     }
 
+    //TODO: adicionar exception handlers
+
     @PostMapping("/car")
     public CarIntegrationModel postCar(@RequestBody CarIntegrationModel carIntegrationModel){
         return externalService.postCar(carIntegrationModel);
