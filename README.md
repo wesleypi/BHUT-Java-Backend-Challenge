@@ -54,7 +54,7 @@ localhost:8080/api/logs
 "marca" : "carro_marca",
 "preco" : 49999.99,
 "anoFabricacao" : 2016,
-"webhookUrl":"sua_url_para_webhook"
+"webhookURL":"sua_url_para_webhook"
 }
 ```
 
