@@ -19,7 +19,7 @@ Antes de começar, certifique-se de ter as seguintes ferramentas instaladas em s
 $ git clone https://github.com/wesleypi/BHUT-Java-Backend-Challenge.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd nome-do-seu-projeto
+$ cd BHUT-Java-Backend-Challenge
 
 # Execute o Docker Compose para iniciar os containers
 $ docker compose up -d
