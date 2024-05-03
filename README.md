@@ -46,6 +46,17 @@ localhost:8080/api/car
 localhost:8080/api/logs
 ```
 
+### exemplo para POST api/car
+
+```json
+{
+"nome" : "carro_nome",
+"marca" : "carro_marca",
+"preco" : 49999.99,
+"anoFabricacao" : 2016,
+"webhookUrl":"sua_url_para_webhook"
+}
+```
 
 
 ## Outras Tecnologias 
