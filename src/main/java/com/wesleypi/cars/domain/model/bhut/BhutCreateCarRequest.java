@@ -1,20 +1,15 @@
-package com.wesleypi.cars.model;
+package com.wesleypi.cars.domain.model.bhut;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-
 import java.math.BigDecimal;
-import java.time.Year;
 import java.util.UUID;
-
 
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class CarIntegrationModel {
+public class BhutCreateCarRequest {
     private UUID id;
     @JsonProperty("nome")
     private String name;
@@ -23,5 +18,6 @@ public class CarIntegrationModel {
     @JsonProperty("preco")
     private BigDecimal price;
     @JsonProperty("anoFabricacao")
-    private Year manufactureYear;
+    private Integer manufactureYear;
+    private String webhookURL;
 }

@@ -1,4 +1,4 @@
-package com.wesleypi.cars.model.external;
+package com.wesleypi.cars.domain.model.bhut;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PaginationResponse {
+public class BhutPaginationResponse {
     @JsonProperty("pagina")
     private Integer page;
     @JsonProperty("tamanhoPagina")

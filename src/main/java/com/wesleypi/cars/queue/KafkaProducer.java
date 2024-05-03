@@ -1,22 +1,21 @@
 package com.wesleypi.cars.queue;
+
+import com.wesleypi.cars.domain.model.bhut.BhutCreateCarRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Slf4j
-@Component
+@Service
 @RequiredArgsConstructor
 public class KafkaProducer {
 
     @Value("${topic.create-car}")
-    private String TOPIC;
+    private String topic;
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, CarQueue> kafkaTemplate;
 
-    public void sendFlightEvent(String message){
-        kafkaTemplate.send(TOPIC, message);
-        log.info("Producer produced the message {}", message);
+    public void event(BhutCreateCarRequest car){
+        kafkaTemplate.send(topic, new CarQueue(car));
     }
 }

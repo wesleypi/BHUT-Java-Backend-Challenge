@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackages = "com.wesleypi.cars.model.repository")
+@EnableMongoRepositories(basePackages = "com.wesleypi.cars.domain.repository")
 public class CarsApplication {
 
 	public static void main(String[] args) {

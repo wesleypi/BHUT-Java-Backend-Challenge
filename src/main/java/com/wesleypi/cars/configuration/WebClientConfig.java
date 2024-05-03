@@ -15,4 +15,9 @@ public class WebClientConfig {
     public WebClient webClientExternal(){
         return WebClient.builder().baseUrl(url).build();
     }
+
+    @Bean
+    public WebClient webClientEmpty(){
+        return WebClient.builder().build();
+    }
 }

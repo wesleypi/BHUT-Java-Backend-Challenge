@@ -1,35 +1,37 @@
 package com.wesleypi.cars.controller;
 
-import com.wesleypi.cars.model.CarIntegrationModel;
-import com.wesleypi.cars.model.external.CarsResponse;
-import com.wesleypi.cars.service.ExternalService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.wesleypi.cars.domain.model.bhut.BhutCreateCarRequest;
+import com.wesleypi.cars.domain.model.bhut.BhutGetCarCollectionResponse;
+import com.wesleypi.cars.queue.KafkaProducer;
+import com.wesleypi.cars.service.BhutRequestService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@Slf4j
 public class CarsController {
 
+    private final BhutRequestService requestService;
 
-    private final ExternalService externalService;
+    private final KafkaProducer kafkaProducer;
 
-    public CarsController(ExternalService externalService) {
-        this.externalService = externalService;
+    public CarsController(BhutRequestService requestService, KafkaProducer kafkaProducer) {
+        this.requestService = requestService;
+        this.kafkaProducer = kafkaProducer;
     }
 
     @GetMapping("/car")
-    public CarsResponse getCars(){
-        return externalService.getCars();
+    @ResponseStatus(HttpStatus.OK)
+    public BhutGetCarCollectionResponse getCars(){
+        return requestService.getCars();
     }
 
-    //TODO: adicionar exception handlers
-
     @PostMapping("/car")
-    public CarIntegrationModel postCar(@RequestBody CarIntegrationModel carIntegrationModel){
-        return externalService.postCar(carIntegrationModel);
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public BhutCreateCarRequest postCar(@RequestBody BhutCreateCarRequest bhutCreateCarRequest){
+        bhutCreateCarRequest.setId(
+                requestService.postCar(bhutCreateCarRequest).getId());
+        kafkaProducer.event(bhutCreateCarRequest);
+        return bhutCreateCarRequest;
     }
 
 }

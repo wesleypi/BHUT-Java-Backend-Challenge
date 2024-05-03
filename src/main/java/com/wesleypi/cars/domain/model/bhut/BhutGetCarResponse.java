@@ -1,4 +1,4 @@
-package com.wesleypi.cars.model.external;
+package com.wesleypi.cars.domain.model.bhut;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +15,7 @@ import java.util.UUID;
     @Setter
     @Builder
     @AllArgsConstructor
-    public class CarResponse {
+    public class BhutGetCarResponse {
         private UUID id;
         @JsonProperty("nome")
         private String name;

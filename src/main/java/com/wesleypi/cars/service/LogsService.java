@@ -1,7 +1,7 @@
 package com.wesleypi.cars.service;
 
-import com.wesleypi.cars.model.Log;
-import com.wesleypi.cars.model.repository.LogRepository;
+import com.wesleypi.cars.domain.model.LogModel;
+import com.wesleypi.cars.domain.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,11 @@ public class LogsService {
     @Autowired
     LogRepository logRepository;
 
-    public List<Log> getLog(){
+    public List<LogModel> getLog(){
         return logRepository.findAll();
     }
 
-    public Log saveLog(Log log){
-        return logRepository.save(log);
+    public LogModel create(LogModel logModel){
+        return logRepository.save(logModel);
     }
 }

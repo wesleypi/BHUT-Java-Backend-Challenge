@@ -10,7 +10,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: com.wesleypi.cars.queue # change this with your event packages
+        spring.json.trusted.packages: '*'
     producer:
       acks: -1
       bootstrap-servers: localhost:29092
