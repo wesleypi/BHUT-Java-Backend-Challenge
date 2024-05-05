@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

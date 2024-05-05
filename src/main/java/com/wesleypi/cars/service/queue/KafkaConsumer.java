@@ -1,5 +1,6 @@
-package com.wesleypi.cars.queue;
+package com.wesleypi.cars.service.queue;
 
+import com.wesleypi.cars.domain.dto.CarQueue;
 import com.wesleypi.cars.domain.model.LogModel;
 import com.wesleypi.cars.service.LogsService;
 import com.wesleypi.cars.service.WebhookService;
@@ -21,7 +22,7 @@ public class KafkaConsumer {
 
     @KafkaListener(topics = "topic-create-car", groupId = "api-car")
     public void event(ConsumerRecord<String, CarQueue> record) {
-        logsService.create(LogModel.builder()
+        logsService.createLog(LogModel.builder()
                 .carId(record.value().getCarId())
                 .creationDateHour(record.value().getCreationDateHour())
                 .processingDateHour(LocalDateTime.now()).build());

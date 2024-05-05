@@ -15,8 +15,10 @@ public class WebhookService {
     }
 
     public void postWebhook(String url) {
+        if (url == null || url.isBlank()){
+            return;
+        }
         String defaultMessage = "Um novo carro foi cadastrado!";
-
         webClient.method(HttpMethod.POST)
                 .uri(url)
                 .body(Mono.just(defaultMessage), String.class)

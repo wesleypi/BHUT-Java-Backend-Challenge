@@ -1,11 +1,11 @@
-package com.wesleypi.cars.domain.exceptions;
+package com.wesleypi.cars.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class WebClienteResponse {
+public class ExceptionResponse {
     private String httpStatus;
     private String message;
 }

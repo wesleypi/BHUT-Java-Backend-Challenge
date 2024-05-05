@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -13,5 +13,5 @@ public class BhutPaginationResponse {
     private Integer page;
     @JsonProperty("tamanhoPagina")
     private Integer pageSize;
-    private Integer total;
+    private Long total;
 }

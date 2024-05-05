@@ -1,6 +1,7 @@
-package com.wesleypi.cars.queue;
+package com.wesleypi.cars.service.queue;
 
-import com.wesleypi.cars.domain.model.bhut.BhutCreateCarRequest;
+import com.wesleypi.cars.domain.dto.CarQueue;
+import com.wesleypi.cars.domain.dto.CreateCarRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -15,7 +16,7 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, CarQueue> kafkaTemplate;
 
-    public void event(BhutCreateCarRequest car){
+    public void event(CreateCarRequest car){
         kafkaTemplate.send(topic, new CarQueue(car));
     }
 }

@@ -1,12 +1,15 @@
 package com.wesleypi.cars.controller;
 
-import com.wesleypi.cars.domain.model.bhut.BhutCreateCarRequest;
-import com.wesleypi.cars.domain.model.bhut.BhutGetCarCollectionResponse;
-import com.wesleypi.cars.queue.KafkaProducer;
+import com.wesleypi.cars.domain.dto.CreateCarRequest;
+import com.wesleypi.cars.domain.dto.bhut.BhutGetCarWithPaginationResponse;
+import com.wesleypi.cars.service.queue.KafkaProducer;
 import com.wesleypi.cars.service.BhutRequestService;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class CarsController {
@@ -22,17 +25,16 @@ public class CarsController {
 
     @GetMapping("/car")
     @ResponseStatus(HttpStatus.OK)
-    public BhutGetCarCollectionResponse getCars(){
-        return requestService.getCars();
+    public BhutGetCarWithPaginationResponse getCars(@RequestParam(defaultValue = "1") int page,
+                                                    @RequestParam(defaultValue = "5") int size){
+        return requestService.getCars(page, size);
     }
 
     @PostMapping("/car")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public BhutCreateCarRequest postCar(@RequestBody BhutCreateCarRequest bhutCreateCarRequest){
-        bhutCreateCarRequest.setId(
-                requestService.postCar(bhutCreateCarRequest).getId());
-        kafkaProducer.event(bhutCreateCarRequest);
-        return bhutCreateCarRequest;
+    public CreateCarRequest postCar(@Valid @RequestBody CreateCarRequest carRequest){
+        carRequest.setId(requestService.postCar(carRequest).getId().toString());
+        kafkaProducer.event(carRequest);
+        return carRequest;
     }
-
 }
