@@ -44,6 +44,7 @@ public class BhutRequestService {
                         .queryParam("tamanhoPagina", size).build())
                 .headers(httpHeaders -> httpHeaders.setBearerAuth(authService.getToken()))
                 .retrieve()
-                .bodyToMono(BhutGetCarWithPaginationResponse.class).block();
+                .bodyToMono(BhutGetCarWithPaginationResponse.class)
+                .block();
     }
 }

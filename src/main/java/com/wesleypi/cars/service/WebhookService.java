@@ -1,6 +1,5 @@
 package com.wesleypi.cars.service;
 
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -19,7 +18,7 @@ public class WebhookService {
             return;
         }
         String defaultMessage = "Um novo carro foi cadastrado!";
-        webClient.method(HttpMethod.POST)
+        webClient.post()
                 .uri(url)
                 .body(Mono.just(defaultMessage), String.class)
                 .retrieve()

@@ -61,7 +61,7 @@ public class BhutAuthService {
         return LocalDateTime.now().isAfter(expirationTime);
     }
 
-    public BhutTokenResponse createToken(){
+    private BhutTokenResponse createToken(){
         return webClient.post()
                 .uri(tokenUri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ public class BhutAuthService {
                 .bodyToMono(BhutTokenResponse.class).block();
     }
 
-    public BhutTokenResponse refreshToken(){
+    private BhutTokenResponse refreshToken(){
         return webClient.post()
                 .uri(refreshTokenUri)
                 .contentType(MediaType.APPLICATION_JSON)

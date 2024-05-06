@@ -24,7 +24,7 @@ import java.util.UUID;
         @JsonProperty("preco")
         private BigDecimal price;
         @JsonProperty("anoFabricacao")
-        private Year manufactureYear;
+        private Integer manufactureYear;
         @JsonProperty("ativo")
         private Boolean active;
         @JsonProperty("criadoEm")
