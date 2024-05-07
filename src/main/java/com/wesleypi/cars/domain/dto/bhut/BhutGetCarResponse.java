@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +24,7 @@ import java.util.UUID;
         @JsonProperty("preco")
         private BigDecimal price;
         @JsonProperty("anoFabricacao")
-        private Year manufactureYear;
+        private Integer manufactureYear;
         @JsonProperty("ativo")
         private Boolean active;
         @JsonProperty("criadoEm")

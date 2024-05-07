@@ -19,6 +19,12 @@ spring:
 topic:
   create-car: topic-create-car
 
+springdoc:
+  api-docs:
+    path: /json-doc
+  swagger-ui:
+    path: /docs
+
 external-api:
   user: ${USER_CREDENTIAL}
   pass: ${PASS_CREDENTIAL}

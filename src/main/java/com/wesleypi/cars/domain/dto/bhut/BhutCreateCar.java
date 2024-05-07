@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -9,7 +9,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-public class BhutCreateCarRequest {
+@Builder
+public class BhutCreateCar {
     private UUID id;
     @JsonProperty("nome")
     private String name;
@@ -19,5 +20,4 @@ public class BhutCreateCarRequest {
     private BigDecimal price;
     @JsonProperty("anoFabricacao")
     private Integer manufactureYear;
-    private String webhookURL;
 }

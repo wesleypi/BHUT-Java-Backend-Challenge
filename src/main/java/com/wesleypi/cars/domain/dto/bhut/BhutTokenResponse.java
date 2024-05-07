@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

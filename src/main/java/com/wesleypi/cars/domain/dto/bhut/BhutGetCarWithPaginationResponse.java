@@ -1,4 +1,4 @@
-package com.wesleypi.cars.domain.model.bhut;
+package com.wesleypi.cars.domain.dto.bhut;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class BhutGetCarCollectionResponse {
+public class BhutGetCarWithPaginationResponse {
     @JsonProperty("paginacao")
     private BhutPaginationResponse Pagination;
     @JsonProperty("itens")

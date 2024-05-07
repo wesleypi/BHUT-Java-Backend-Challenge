@@ -1,8 +1,7 @@
-package com.wesleypi.cars.queue;
+package com.wesleypi.cars.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.wesleypi.cars.domain.model.bhut.BhutCreateCarRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
@@ -17,9 +16,9 @@ public class CarQueue {
     private LocalDateTime creationDateHour;
     private String webhookURL;
 
-    public CarQueue(BhutCreateCarRequest bhutCreateCarRequest){
-        this.carId = bhutCreateCarRequest.getId().toString();
+    public CarQueue(CreateCarRequest carRequest){
+        this.carId = carRequest.getId();
         this.creationDateHour = LocalDateTime.now();
-        this.webhookURL = bhutCreateCarRequest.getWebhookURL();
+        this.webhookURL = carRequest.getWebhookURL();
     }
 }

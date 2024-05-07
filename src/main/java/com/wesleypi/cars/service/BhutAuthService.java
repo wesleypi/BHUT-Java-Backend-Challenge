@@ -1,8 +1,8 @@
 package com.wesleypi.cars.service;
 
-import com.wesleypi.cars.domain.model.bhut.BhutTokenRefreshRequest;
-import com.wesleypi.cars.domain.model.bhut.BhutTokenRequest;
-import com.wesleypi.cars.domain.model.bhut.BhutTokenResponse;
+import com.wesleypi.cars.domain.dto.bhut.BhutTokenRefreshRequest;
+import com.wesleypi.cars.domain.dto.bhut.BhutTokenRequest;
+import com.wesleypi.cars.domain.dto.bhut.BhutTokenResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,6 @@ public class BhutAuthService {
     }
 
     public String getToken(){
-
         if(tokenResponse == null){
             tokenResponse = createToken();
 
@@ -51,7 +50,6 @@ public class BhutAuthService {
 
             expirationTime = refreshExpiration(tokenResponse.getExpiresIn());
         }
-
         return tokenResponse.getAccessToken();
     }
 
@@ -63,7 +61,7 @@ public class BhutAuthService {
         return LocalDateTime.now().isAfter(expirationTime);
     }
 
-    public BhutTokenResponse createToken(){
+    private BhutTokenResponse createToken(){
         return webClient.post()
                 .uri(tokenUri)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -73,7 +71,7 @@ public class BhutAuthService {
                 .bodyToMono(BhutTokenResponse.class).block();
     }
 
-    public BhutTokenResponse refreshToken(){
+    private BhutTokenResponse refreshToken(){
         return webClient.post()
                 .uri(refreshTokenUri)
                 .contentType(MediaType.APPLICATION_JSON)
